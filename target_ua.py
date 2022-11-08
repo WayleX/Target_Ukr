@@ -55,3 +55,23 @@ def get_words(f_1, letters):
             if x_2_list[0:3]=="adv":
                 words.append((x_list[0],"adverb"))
     return words
+def check_user_words(user_words, language_part, letters, dict_of_words):
+    """
+    checks user words in list
+    return guessed and not guessed words
+    >>> 1==1
+    True
+    """
+    right_words=[]
+    for i in user_words:
+        if not i[0] in letters:
+            continue
+        if (i,language_part) in dict_of_words:
+            right_words.append(i)
+    #print(f"Guessed words:{right_words}")
+    not_guessed=[]
+    for i in dict_of_words:
+        if not i[0] in user_words and language_part==i[1]:
+            not_guessed.append(i[0])
+    #print(f"Not guessed words:{not_guessed}")
+    return right_words,not_guessed
