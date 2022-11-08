@@ -29,3 +29,29 @@ def generate_part():
     part=random.choice(parts)
     return part
 #print(generate_grid())
+def get_words(f_1, letters):
+    """
+    Reads the file f. Checks the words with rules and returns a list of words.
+    >>> 1==1
+    True
+    """
+    words=[]
+    with open(f_1,'r', encoding="utf-8") as file:
+        for line in file:
+            x_list=line.strip().split()
+            if len(x_list)<2:
+                continue
+            x_2_list=x_list[1]
+            if len(x_list[0])>5:
+                continue
+            if not x_list[0][0] in letters:
+                continue
+            if x_2_list[0:2]=="/n" or x_2_list[0:4]=="noun":
+                words.append((x_list[0],"noun"))
+            if x_2_list[0:2]=="/v" or x_2_list[0:1]=="v":
+                words.append((x_list[0],"verb"))
+            if x_2_list[0:4]=="/adj" or x_2_list[0:3]=="adj":
+                words.append((x_list[0],"adjective"))
+            if x_2_list[0:3]=="adv":
+                words.append((x_list[0],"adverb"))
+    return words
