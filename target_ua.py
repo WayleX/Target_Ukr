@@ -75,3 +75,19 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
             not_guessed.append(i[0])
     #print(f"Not guessed words:{not_guessed}")
     return right_words,not_guessed
+def input_user():
+    """
+    takes user input
+    >>> 1==1
+    True
+    """
+    words=[]
+    try:
+        while True:
+            word=input()
+            if word=="":
+                break
+            words.append(word)
+    except EOFError:
+        return words
+    return words
