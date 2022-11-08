@@ -19,6 +19,7 @@ def generate_grid():
         iter_num+=1
         grid.append(letter)
     return grid
+
 def generate_part():
     """
     generates part of language
@@ -29,6 +30,7 @@ def generate_part():
     part=random.choice(parts)
     return part
 #print(generate_grid())
+
 def get_words(f_1, letters):
     """
     Reads the file f. Checks the words with rules and returns a list of words.
@@ -55,6 +57,7 @@ def get_words(f_1, letters):
             if x_2_list[0:3]=="adv":
                 words.append((x_list[0],"adverb"))
     return words
+
 def check_user_words(user_words, language_part, letters, dict_of_words):
     """
     checks user words in list
@@ -75,6 +78,7 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
             not_guessed.append(i[0])
     #print(f"Not guessed words:{not_guessed}")
     return right_words,not_guessed
+
 def input_user():
     """
     takes user input
@@ -91,3 +95,17 @@ def input_user():
     except EOFError:
         return words
     return words
+
+def main():
+    """
+    just connect functions for user
+    >>> 1==1
+    True
+    """
+    letters=generate_grid()
+    part=generate_part()
+    print(letters,part)
+    print("print your words")
+    words=input_user()
+    check_user_words(words, part, letters, get_words("base.lst", letters))
+#main()
